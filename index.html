@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gửi Nhi 💜</title>
+  <meta name="description" content="Một lời nhắn đặc biệt dành cho Nhi" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg1: #f7d9ff;
+      --bg2: #dbe7ff;
+      --bg3: #d8fff1;
+      --text: #2f2a3a;
+      --subtext: #6d6780;
+      --primary: #7c4dff;
+      --primary-dark: #5f35d7;
+      --card: rgba(255, 255, 255, 0.76);
+      --border: rgba(255, 255, 255, 0.55);
+      --shadow: 0 20px 60px rgba(76, 67, 124, 0.18);
+      --gold: #ffbf69;
+      --pink: #ff77b7;
+      --green: #41c98b;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Be Vietnam Pro", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.65), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255,255,255,0.48), transparent 25%),
+        linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      min-height: 100%;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    .floating-bg {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.55;
+      animation: float 10s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 280px;
+      height: 280px;
+      left: -50px;
+      top: 80px;
+      background: #ffffff;
+    }
+
+    .orb.two {
+      width: 320px;
+      height: 320px;
+      right: -80px;
+      top: 120px;
+      background: #ffd8ef;
+      animation-delay: 1.5s;
+    }
+
+    .orb.three {
+      width: 260px;
+      height: 260px;
+      left: 30%;
+      bottom: -60px;
+      background: #d8fff6;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-18px) translateX(10px); }
+    }
+
+    .screen {
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 760px;
+      animation: fadeUp 1s ease;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      color: #5a5370;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 24px rgba(95, 53, 215, 0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 72px);
+      line-height: 1.06;
+      margin: 0 0 14px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #3d3361;
+    }
+
+    .hero .highlight {
+      background: linear-gradient(90deg, #7c4dff, #ff5da8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.8;
+      color: var(--subtext);
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 24px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #9b6dff);
+      color: white;
+      box-shadow: 0 14px 28px rgba(124, 77, 255, 0.28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 18px 34px rgba(124, 77, 255, 0.34);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.75);
+      color: #4b4462;
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: 0 10px 22px rgba(70, 60, 110, 0.08);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: #7a7392;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .message-section {
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px 50px;
+    }
+
+    .message-card-wrap {
+      width: 100%;
+      max-width: 920px;
+      position: relative;
+    }
+
+    .spark {
+      position: absolute;
+      font-size: 22px;
+      animation: sparkle 2.4s ease-in-out infinite;
+      opacity: 0.9;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .spark.s1 { left: 10px; top: 14px; }
+    .spark.s2 { right: 12px; top: 8px; animation-delay: 0.8s; }
+    .spark.s3 { left: 40px; bottom: 10px; animation-delay: 1.5s; }
+    .spark.s4 { right: 30px; bottom: 40px; animation-delay: 2s; }
+
+    @keyframes sparkle {
+      0%, 100% { transform: translateY(0) scale(1); opacity: 0.55; }
+      50% { transform: translateY(-8px) scale(1.22); opacity: 1; }
+    }
+
+    .message-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow);
+      border-radius: 30px;
+      overflow: hidden;
+      transform-origin: center top;
+      animation: cardEnter 0.9s cubic-bezier(.2,.8,.2,1);
+    }
+
+    @keyframes cardEnter {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .top-ribbon {
+      height: 8px;
+      background: linear-gradient(90deg, #7c4dff, #ff77b7, #41c98b, #ffbf69);
+    }
+
+    .message-inner {
+      padding: 32px;
+    }
+
+    .message-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .message-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      font-size: 20px;
+      background: linear-gradient(135deg, #7c4dff, #ff5da8);
+      box-shadow: 0 10px 24px rgba(124, 77, 255, 0.25);
+    }
+
+    .message-title h2 {
+      margin: 0;
+      font-size: 28px;
+      color: #41365e;
+    }
+
+    .message-title p {
+      margin: 6px 0 0;
+      font-size: 14px;
+      color: #7a7392;
+    }
+
+    .pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(255,255,255,0.85);
+      color: #5d5673;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(120, 100, 180, 0.28), transparent);
+      margin: 16px 0 22px;
+    }
+
+    .letter {
+      font-size: 18px;
+      line-height: 1.95;
+      color: #2f2a3a;
+      white-space: pre-line;
+    }
+
+    .letter .line {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: reveal 0.7s ease forwards;
+    }
+
+    .letter .line:nth-child(1) { animation-delay: 0.15s; }
+    .letter .line:nth-child(2) { animation-delay: 0.45s; }
+    .letter .line:nth-child(3) { animation-delay: 0.75s; }
+    .letter .line:nth-child(4) { animation-delay: 1.05s; }
+    .letter .line:nth-child(5) { animation-delay: 1.35s; }
+    .letter .line:nth-child(6) { animation-delay: 1.65s; }
+    .letter .line:nth-child(7) { animation-delay: 1.95s; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .quote-box {
+      margin-top: 24px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 20px;
+      padding: 18px 18px;
+      color: #655d7c;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .signature {
+      margin-top: 26px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .signature-box {
+      text-align: right;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.74);
+      padding: 16px 18px;
+      border-radius: 18px;
+      min-width: 180px;
+    }
+
+    .signature-box .from {
+      font-size: 14px;
+      color: #7f7796;
+      margin-bottom: 6px;
+    }
+
+    .signature-box .name {
+      font-size: 22px;
+      font-weight: 800;
+      color: #4a3b6f;
+    }
+
+    .bottom-actions {
+      margin-top: 24px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .mini {
+      font-size: 13px;
+      color: #7e7891;
+      text-align: center;
+      margin-top: 18px;
+    }
+
+    .pickleball {
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      width: 110px;
+      height: 110px;
+      opacity: 0.16;
+      transform: rotate(-12deg);
+    }
+
+    .footer-space {
+      height: 30px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero p {
+        font-size: 16px;
+      }
+
+      .message-inner {
+        padding: 22px;
+      }
+
+      .message-title h2 {
+        font-size: 22px;
+      }
+
+      .letter {
+        font-size: 16px;
+        line-height: 1.9;
+      }
+
+      .pickleball {
+        width: 86px;
+        height: 86px;
+      }
+
+      .bottom-actions {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-bg">
+    <div class="orb one"></div>
+    <div class="orb two"></div>
+    <div class="orb three"></div>
+  </div>
+
+  <section class="screen" id="heroScreen">
+    <div class="hero">
+      <div class="badge">✨ Một lời nhắn nhỏ, dành cho một người rất đặc biệt</div>
+      <h1>Gửi <span class="highlight">Nhi</span> 💜</h1>
+      <p>
+        Có những người không chỉ là đồng nghiệp, mà còn là một phần rất đẹp trong hành trình làm việc và những kỷ niệm đáng nhớ.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="openLetter()">💌 Mở lời nhắn</button>
+        <button class="btn btn-secondary" onclick="scrollPreview()">🌷 Xem trước</button>
+      </div>
+      <div class="note">Dành cho một cô gái tích cực, hài hước và rất “đậm chất Nhi”</div>
+    </div>
+  </section>
+
+  <section class="message-section" id="messageSection">
+    <div class="message-card-wrap">
+      <div class="spark s1">✨</div>
+      <div class="spark s2">🌷</div>
+      <div class="spark s3">💫</div>
+      <div class="spark s4">🏓</div>
+
+      <div class="message-card">
+        <div class="top-ribbon"></div>
+
+        <svg class="pickleball" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="50" cy="50" r="42" fill="#7c4dff"/>
+          <circle cx="35" cy="35" r="5" fill="white"/>
+          <circle cx="50" cy="28" r="5" fill="white"/>
+          <circle cx="65" cy="35" r="5" fill="white"/>
+          <circle cx="28" cy="50" r="5" fill="white"/>
+          <circle cx="42" cy="50" r="5" fill="white"/>
+          <circle cx="58" cy="50" r="5" fill="white"/>
+          <circle cx="72" cy="50" r="5" fill="white"/>
+          <circle cx="35" cy="65" r="5" fill="white"/>
+          <circle cx="50" cy="72" r="5" fill="white"/>
+          <circle cx="65" cy="65" r="5" fill="white"/>
+        </svg>
+
+        <div class="message-inner">
+          <div class="message-top">
+            <div class="message-title">
+              <div class="avatar">N</div>
+              <div>
+                <h2>Gửi Nhi</h2>
+                <p>Một lời chúc thật lòng từ Thế Anh</p>
+              </div>
+            </div>
+            <div class="pill">💜 Good luck on your new journey</div>
+          </div>
+
+          <div class="divider"></div>
+
+          <div class="letter" id="letterBlock">
+            <div class="line"><strong>Nhi thân mến,</strong></div>
+            <div class="line">4 năm không phải là 1 quãng thời gian quá dài nhưng cũng không ngắn, đủ để có một mối quan hệ trân quý và những kỷ niệm quý giá.</div>
+            <div class="line">Thật vui vì được biết em làm đồng nghiệp, làm bạn chơi Pickleball, một cô gái có năng lượng tích cực đỉnh nóc kịch trần, hài hước, luôn đem lại những miếng hài “xéo xắt” đậm chất “Nhi”.</div>
+            <div class="line">Chúc em nhiều may mắn, thành công trên con đường mới — anh chắc chắn em sẽ thành công.</div>
+            <div class="line">Hãy luôn giữ vững tinh thần tích cực ấy nhé, vì đó là một trong những điều rất đẹp khiến mọi người nhớ đến em.</div>
+            <div class="line">Hẹn gặp lại trên sân Pickleball…</div>
+            <div class="line">🌷</div>
+          </div>
+
+          <div class="quote-box">
+            🏓 Từ đồng nghiệp, đến bạn chơi Pickleball, đến một người luôn mang năng lượng tích cực.
+          </div>
+
+          <div class="signature">
+            <div class="signature-box">
+              <div class="from">Thân mến,</div>
+              <div class="name">Thế Anh.</div>
+            </div>
+          </div>
+
+          <div class="bottom-actions">
+            <button class="btn btn-primary" onclick="copyLink()">🔗 Copy lời nhắn</button>
+            <button class="btn btn-secondary" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆️ Lên đầu trang</button>
+          </div>
+
+          <div class="mini">Made with sincerity 💜</div>
+        </div>
+      </div>
+
+      <div class="footer-space"></div>
+    </div>
+  </section>
+
+  <script>
+    const messageSection = document.getElementById("messageSection");
+    const heroScreen = document.getElementById("heroScreen");
+    const originalText = `Nhi thân mến,
+
+4 năm không phải là 1 quãng thời gian quá dài nhưng cũng không ngắn, đủ để có một mối quan hệ trân quý và những kỷ niệm quý giá.
+
+Thật vui vì được biết em làm đồng nghiệp, làm bạn chơi Pickleball, một cô gái có năng lượng tích cực đỉnh nóc kịch trần, hài hước, luôn đem lại những miếng hài “xéo xắt” đậm chất “Nhi”.
+
+Chúc em nhiều may mắn, thành công trên con đường mới (anh chắc chắn em sẽ thành công), luôn giữ vững tinh thần tích cực vậy nhé.
+
+Hẹn gặp lại trên sân Pickleball…
+Thế Anh.`;
+
+    function openLetter() {
+      messageSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      restartAnimation();
+    }
+
+    function scrollPreview() {
+      messageSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function restartAnimation() {
+      const lines = document.querySelectorAll(".letter .line");
+      lines.forEach((line) => {
+        line.style.animation = "none";
+        void line.offsetWidth;
+        line.style.animation = "";
+      });
+    }
+
+    async function copyLink() {
+      try {
+        const shareText = originalText + "\\n\\n" + window.location.href;
+        await navigator.clipboard.writeText(shareText);
+        alert("Đã copy lời nhắn và link trang web ✅");
+      } catch (e) {
+        alert("Không thể copy tự động. Sếp có thể copy thủ công nhé 🙂");
+      }
+    }
+  </script>
+</body>
+</html>
